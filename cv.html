@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Olajide - Curriculum Vitae</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .cv-container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: white;
+      padding: 50px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00d9ff;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .cv-header h1 {
+      font-size: 2.5rem;
+      color: #1a1a2e;
+    }
+    
+    .cv-header .title {
+      font-size: 1.2rem;
+      color: #00d9ff;
+      font-weight: 600;
+    }
+    
+    .cv-profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #00d9ff;
+      object-fit: cover;
+    }
+    
+    .cv-section {
+      margin-bottom: 30px;
+    }
+    
+    .cv-section-title {
+      font-size: 1.4rem;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .cv-section-title i {
+      color: #00d9ff;
+    }
+    
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .cv-item {
+      margin-bottom: 15px;
+    }
+    
+    .cv-item h4 {
+      font-size: 1.1rem;
+      color: #1a1a2e;
+    }
+    
+    .cv-item .company,
+    .cv-item .school {
+      color: #00d9ff;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .cv-item .date {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    
+    .cv-item p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    .cv-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .cv-skill {
+      padding: 8px 20px;
+      background: linear-gradient(135deg, #00d9ff, #8b5cf6);
+      color: white;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .cv-contact-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .cv-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .cv-contact-item i {
+      color: #00d9ff;
+      font-size: 1.2rem;
+    }
+    
+    .action-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    .print-btn, .preview-btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #00d9ff, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .preview-btn {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+    }
+
+    .print-btn:hover, .preview-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 217, 255, 0.6);
+    }
+
+    .preview-btn:hover {
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.6);
+    }
+
+    .preview-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .preview-modal-content {
+      width: 90%;
+      height: 90%;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.3s ease;
+    }
+
+    .preview-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: #1a1a2e;
+      color: white;
+    }
+
+    .preview-modal-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .preview-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+      line-height: 1;
+    }
+
+    .preview-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .preview-modal-body {
+      flex: 1;
+      overflow: auto;
+    }
+
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .preview-modal-footer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px 30px;
+      background: #f5f5f5;
+    }
+
+    .preview-modal-footer .print-btn {
+      position: static;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .cv-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+      }
+      .action-buttons, .preview-modal {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .action-buttons {
+        bottom: 20px;
+        right: 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .print-btn, .preview-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+      .preview-modal-content {
+        width: 95%;
+        height: 95%;
+        border-radius: 10px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cv-container {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+      .cv-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .cv-grid {
+        grid-template-columns: 1fr;
+      }
+      .cv-contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <div class="cv-header">
+      <div>
+        <h1>Alex Olajide</h1>
+        <p class="title">Full Stack Engineer</p>
+      </div>
+      <img src="Alex.jpg" alt="Alex Olajide" class="cv-profile-img">
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-user"></i> Profile</h2>
+      <p>Passionate Full Stack Engineer with 2+ years of experience in building modern, responsive web applications. Skilled in React, Node.js, PHP, Laravel, and database management. Committed to delivering high-quality solutions and continuous learning.</p>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+      <div class="cv-grid">
+        <div class="cv-item">
+          <h4>Full Stack Engineer</h4>
+          <p class="company">Freelance / Self-Employed</p>
+          <p class="date">2024 - Present</p>
+          <p>Building modern web applications for clients worldwide. Specializing in React, Node.js, PHP, and Laravel solutions.</p>
+        </div>
+        <div class="cv-item">
+          <h4>Web Developer</h4>
+          <p class="company">Tech Solutions Agency</p>
+          <p class="date">2024 - 2026</p>
+          <p>Developed responsive websites and web applications for various clients. Collaborated with design teams.</p>
+        </div>
+        <div class="cv-item">
+          <h4>Junior Web Developer</h4>
+          <p class="company">Digital Innovators</p>
+          <p class="date">2024 - 2025</p>
+          <p>Created landing pages, responsive designs, and learned modern development practices.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+      <div class="cv-grid">
+        <div class="cv-item">
+          <h4>Computer Science & Engineering</h4>
+          <p class="school">Ladoke Akintola University of Technology (LAUTECH)</p>
+          <p class="date">2015 - 2022</p>
+          <p>Core computer science concepts including algorithms, data structures, databases, and software development.</p>
+        </div>
+        <div class="cv-item">
+          <h4>Software Engineering / Web Development Certification</h4>
+          <p class="school">SQI Coding school</p>
+          <p class="date">2024 - 2026</p>
+          <p>Intensive bootcamp covering HTML5, CSS3, JavaScript, React, Node.js, and database management.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-code"></i> Skills</h2>
+      <div class="cv-skills">
+        <span class="cv-skill">HTML5</span>
+        <span class="cv-skill">CSS3</span>
+        <span class="cv-skill">JavaScript</span>
+        <span class="cv-skill">React</span>
+        <span class="cv-skill">Angular</span>
+        <span class="cv-skill">Node.js</span>
+        <span class="cv-skill">PHP</span>
+        <span class="cv-skill">Laravel</span>
+        <span class="cv-skill">MySQL</span>
+        <span class="cv-skill">MongoDB</span>
+        <span class="cv-skill">Git</span>
+        <span class="cv-skill">REST APIs</span>
+      </div>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+      <div class="cv-grid">
+        <div class="cv-item">
+          <h4>Full Stack Web Development</h4>
+          <p class="company">MERN Stack Certification</p>
+          <p class="date">2024</p>
+        </div>
+        <div class="cv-item">
+          <h4>JavaScript Advanced</h4>
+          <p class="company">ES6+ Features Certification</p>
+          <p class="date">2025</p>
+        </div>
+        <div class="cv-item">
+          <h4>React Developer</h4>
+          <p class="company">Professional React Certification</p>
+          <p class="date">2025</p>
+        </div>
+        <div class="cv-item">
+          <h4>Problem Solving</h4>
+          <p class="company">Data Structures & Algorithms</p>
+          <p class="date">2025</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-globe"></i> Languages</h2>
+      <div class="cv-grid">
+        <div class="cv-item">
+          <h4>English</h4>
+          <p>Native / Professional</p>
+        </div>
+        <div class="cv-item">
+          <h4>Edo</h4>
+          <p>Native</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cv-section">
+      <h2 class="cv-section-title"><i class="fas fa-envelope"></i> Contact</h2>
+      <div class="cv-contact-info">
+        <div class="cv-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>aolajide210@gmail.com</span>
+        </div>
+        <div class="cv-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+2348075886640</span>
+        </div>
+        <div class="cv-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Lagos, Nigeria</span>
+        </div>
+        <div class="cv-contact-item">
+          <i class="fab fa-linkedin"></i>
+          <span>linkedin.com/in/alexolajide</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="action-buttons">
+    <button class="print-btn" onclick="downloadPDF()">
+      <i class="fas fa-download"></i> Download CV
+    </button>
+    <button class="preview-btn" onclick="previewCV()">
+      <i class="fas fa-eye"></i> Preview CV
+    </button>
+  </div>
+
+  <div id="previewModal" class="preview-modal">
+    <div class="preview-modal-content">
+      <div class="preview-modal-header">
+        <h2>CV Preview</h2>
+        <button class="preview-close" onclick="closePreview()">&times;</button>
+      </div>
+      <div class="preview-modal-body">
+        <iframe id="previewIframe" class="preview-iframe"></iframe>
+      </div>
+      <div class="preview-modal-footer">
+        <button class="print-btn" onclick="document.getElementById('previewIframe').contentWindow.print()">
+          <i class="fas fa-print"></i> Print
+        </button>
+        <button class="print-btn" onclick="closePreview(); downloadPDF();">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    function downloadPDF() {
+      const btn = document.querySelector('.print-btn');
+      const previewBtn = document.querySelector('.preview-btn');
+      btn.style.display = 'none';
+      if (previewBtn) previewBtn.style.display = 'none';
+
+      const element = document.querySelector('.cv-container');
+      const opt = {
+        margin:       [0.5, 0.5, 0.5, 0.5],
+        filename:     'Alex_Olajide_CV.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, logging: false },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        btn.style.display = '';
+        if (previewBtn) previewBtn.style.display = '';
+      });
+    }
+
+    function previewCV() {
+      const modal = document.getElementById('previewModal');
+      const iframe = document.getElementById('previewIframe');
+      const content = document.querySelector('.cv-container').innerHTML;
+      const styles = document.querySelectorAll('style, link[rel="stylesheet"]');
+      let styleHTML = '';
+      styles.forEach(s => styleHTML += s.outerHTML);
+
+      iframe.srcdoc = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          ${styleHTML}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+          <style>
+            body { background: white; padding: 40px; margin: 0; display: flex; justify-content: center; }
+            .cv-container { max-width: 850px; margin: 0 auto; background: white; padding: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+            .print-btn, .preview-btn { display: none !important; }
+            @media print { body { padding: 0; } .cv-container { box-shadow: none; padding: 20px; } }
+          </style>
+        </head>
+        <body>
+          ${content}
+        </body>
+        </html>
+      `;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePreview() {
+      document.getElementById('previewModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('previewModal');
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closePreview();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePreview();
+      });
+    });
+  </script>
+</body>
+</html>

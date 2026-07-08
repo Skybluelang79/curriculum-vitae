@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Momodu Alex Olajide - Full Stack Engineer specializing in web development, React, Node.js, PHP, and Laravel. Building modern, responsive web applications.">
+  <meta name="keywords"
+    content="Full Stack Engineer, Web Developer, React, Node.js, PHP, Laravel, JavaScript, Portfolio">
+  <meta name="author" content="Alex Olajide">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Alex Olajide | Full Stack Engineer">
+  <meta property="og:description" content="Full Stack Engineer specializing in modern web development.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alexolajide.dev">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alex Olajide | Full Stack Engineer">
+  <meta name="twitter:description" content="Full Stack Engineer specializing in modern web development.">
+
+  <title>Alex. Olajide | Full Stack Engineer</title>
+  <link rel="canonical" href="https://alexolajide.dev">
+  <link rel="icon" type="image/png"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <div class="noise-overlay"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">J.Tech<span class="logo-dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="cover.html">Cover</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="particles-js"></div>
+
+  <div class="animated-bg">
+    <div class="gradient-sphere sphere-1"></div>
+    <div class="gradient-sphere sphere-2"></div>
+    <div class="gradient-sphere sphere-3"></div>
+  </div>
+
+  <div class="loader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="greeting">Hello, I'm</p>
+        <h1 class="glitch" data-text="Alex. Olajide">Alex. Olajide</h1>
+        <p class="subtitle">I'm a <span class="typewriter"></span></p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary magnetic">View My Work</a>
+          <a href="cover.html" class="btn btn-secondary magnetic"><i class="bi bi-envelope-paper"></i> Cover Letter</a>
+          <a href="#contact" class="btn btn-secondary magnetic">Contact Me</a>
+          <a href="cv.html" target="_blank" class="btn btn-secondary magnetic" id="downloadCV"><i class="bi bi-file-earmark-arrow-down"></i> Download CV</a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/alexolajide" target="_blank" class="magnetic"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/alexolajide" target="_blank" class="magnetic"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/alexolajide" target="_blank" class="magnetic"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/alexolajide" target="_blank" class="magnetic"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-wrapper">
+          <img src="Alex.jpg" alt="Alex Olajide">
+</div>
+      </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+      <div class="container">
+        <h2 class="section-title">Certifications & <span>Achievements</span></h2>
+        <div class="certifications-grid">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fas fa-award"></i></div>
+            <h3>Full Stack Web Development</h3>
+            <p>Complete certification in MERN Stack Development</p>
+            <span class="cert-year">2024</span>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+            <h3>JavaScript Advanced</h3>
+            <p>Advanced JavaScript concepts and ES6+ features</p>
+            <span class="cert-year">2023</span>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fas fa-medal"></i></div>
+            <h3>React Developer</h3>
+            <p>Professional React development certification</p>
+            <span class="cert-year">2023</span>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Problem Solving</h3>
+            <p>Data structures and algorithms certification</p>
+            <span class="cert-year">2022</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="languages" class="languages">
+      <div class="container">
+        <h2 class="section-title">Languages</h2>
+        <div class="languages-grid">
+          <div class="language-card">
+            <div class="language-info">
+              <h3>English</h3>
+              <p>Native / Professional</p>
+            </div>
+            <div class="language-level">
+              <div class="level-bar"><div class="level-fill" data-width="100"></div></div>
+              <span>100%</span>
+            </div>
+          </div>
+          <div class="language-card">
+            <div class="language-info">
+              <h3>Yoruba</h3>
+              <p>Native</p>
+            </div>
+            <div class="language-level">
+              <div class="level-bar"><div class="level-fill" data-width="100"></div></div>
+              <span>100%</span>
+            </div>
+          </div>
+          <div class="language-card">
+            <div class="language-info">
+              <h3>Hausa</h3>
+              <p>Basic</p>
+            </div>
+            <div class="language-level">
+              <div class="level-bar"><div class="level-fill" data-width="40"></div></div>
+              <span>40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+          fill="currentColor" opacity=".25"></path>
+        <path
+          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+          fill="currentColor" opacity=".5"></path>
+        <path
+          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">My <span>Services</span></h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Custom web applications built with modern technologies and best practices.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Responsive Design</li>
+              <li><i class="fas fa-check"></i> SEO Optimization</li>
+              <li><i class="fas fa-check"></i> Fast Performance</li>
+            </ul>
+          </div>
+          <div class="service-card featured">
+            <div class="service-badge">Popular</div>
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Frontend Development</h3>
+            <p>Beautiful, interactive user interfaces with React, Angular, and Vue.js.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> React / Angular / Vue</li>
+              <li><i class="fas fa-check"></i> Interactive Animations</li>
+              <li><i class="fas fa-check"></i> State Management</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Backend Development</h3>
+            <p>Robust server-side solutions with Node.js, PHP, and Laravel.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> RESTful APIs</li>
+              <li><i class="fas fa-check"></i> Database Design</li>
+              <li><i class="fas fa-check"></i> Security</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Responsive Design</h3>
+            <p>Mobile-first designs that look great on all devices.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Mobile First</li>
+              <li><i class="fas fa-check"></i> All Screen Sizes</li>
+              <li><i class="fas fa-check"></i> Touch Friendly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">My <span>Skills</span></h2>
+
+        <div class="skills-category">
+          <h3 class="skills-heading"><i class="fas fa-code"></i> Frontend</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="fab fa-html5"></i>
+              <h3>HTML5</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="95"></div>
+              </div>
+              <p>95%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-css3-alt"></i>
+              <h3>CSS3</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="90"></div>
+              </div>
+              <p>90%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-js"></i>
+              <h3>JavaScript</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="90"></div>
+              </div>
+              <p>90%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-react"></i>
+              <h3>React</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="85"></div>
+              </div>
+              <p>85%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-angular"></i>
+              <h3>Angular</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="80"></div>
+              </div>
+              <p>80%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3 class="skills-heading"><i class="fas fa-server"></i> Backend</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="fab fa-node-js"></i>
+              <h3>Node.js</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="88"></div>
+              </div>
+              <p>88%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-php"></i>
+              <h3>PHP</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="85"></div>
+              </div>
+              <p>85%</p>
+            </div>
+            <div class="skill-card">
+              <i class="fab fa-laravel"></i>
+              <h3>Laravel</h3>
+              <div class="progress-bar">
+                <div class="progress" data-width="82"></div>
+              </div>
+              <p>82%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+          <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/00d9ff/1a1a2e?text=Trading+App" alt="Trading App"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/trade-app" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:5173" target="_blank" class="project-action" title="Live Demo (run: cd Trading App 2026/trade-app && npm run dev)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Trading App 2026</h3>
+              <p>Real-time trading dashboard built with React 19, Vite 8, and interactive data visualization.</p>
+              <div class="project-tags">
+                <span><i class="bi bi-code-square"></i> React 19</span>
+                <span><i class="bi bi-lightning"></i> Vite 8</span>
+                <span>ESLint</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Fintech" alt="Fintech App"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/fintech" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:5173" target="_blank" class="project-action" title="Live Demo (run: cd fintech/frontend && npm run dev)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Fintech Platform</h3>
+              <p>Financial services SPA with React 18 frontend and Laravel 12 REST API backend (port 8000).</p>
+              <div class="project-tags">
+                <span><i class="bi bi-code-square"></i> React 18</span>
+                <span><i class="bi bi-gear-wide-connected"></i> Laravel 12</span>
+                <span>Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="frontend">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/ec4899/ffffff?text=Bakery+DB" alt="Bakery DB"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/bakery-db" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:5173" target="_blank" class="project-action" title="Live Demo (run: cd bakery_db/vue-project && npm run dev)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Bakery DB</h3>
+              <p>Vue 3 progressive web app for bakery inventory management with Vue Router and Vite.</p>
+              <div class="project-tags">
+                <span><i class="bi bi-bricks"></i> Vue 3</span>
+                <span>Vite</span>
+                <span>Vue Router</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="frontend">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/00d9ff/1a1a2e?text=Bingo+Notes" alt="Bingo Notes"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/bingo-notes" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:4200" target="_blank" class="project-action" title="Live Demo (run: cd 'September Php_Angular works L3/Bingo-Keep Notes/Bingo' && ng serve)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Bingo Keep Notes</h3>
+              <p>Angular 20 note-keeping application with a clean, responsive UI built with Angular CLI.</p>
+              <div class="project-tags">
+                <span><i class="bi bi-robot"></i> Angular 20</span>
+                <span>TypeScript</span>
+                <span>RxJS</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Web+Store" alt="Web Store"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/web-store" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:4200" target="_blank" class="project-action" title="Live Demo (run: cd 'September Php_Angular works L3/Web.Store/Web.Store' && ng serve)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Web Store (Angular SSR)</h3>
+              <p>Server-side rendered Angular e-commerce store with modern build system and routing.</p>
+              <div class="project-tags">
+                <span><i class="bi bi-robot"></i> Angular SSR</span>
+                <span>TypeScript</span>
+                <span>RxJS</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="frontend">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/ec4899/ffffff?text=MrBreast" alt="MrBreast Website"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/mr-breast" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:8080" target="_blank" class="project-action" title="Live Demo (run: cd MrBreastWebsite && npx http-server)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Old Navy e-Commerce Replica</h3>
+              <p>Full e-commerce replica with shopping cart (localStorage), product filtering, image lightbox, and service worker for offline support.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>ES6+</span>
+                <span><i class="bi bi-arrows-angle-expand"></i> PWA</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/00d9ff/1a1a2e?text=Real+Estate" alt="Real Estate"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/real-estate" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:8080" target="_blank" class="project-action" title="Live Demo (run: cd 'Real Estate/real-estate-website' && npx http-server)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Real Estate Website</h3>
+              <p>Property listing platform with admin dashboard, favorites system, image lightbox, and skeleton loaders.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span><i class="bi bi-speedometer2"></i> Admin Dashboard</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Auth+System" alt="Auth System"
+                loading="lazy">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/alexolajide/auth-system" target="_blank" class="project-action" title="View Source"><i class="fab fa-github"></i></a>
+                  <a href="http://localhost:4200" target="_blank" class="project-action" title="Live Demo (run: cd auth-system/frontend && ng serve)"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Auth System</h3>
+              <p>Full-stack authentication with Angular 19, Bootstrap 5, and secure backend integration.</p>
+              <div class="project-tags">
+                <span><i class="bi bi-robot"></i> Angular 19</span>
+                <span>Bootstrap 5</span>
+                <span>SCSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Client <span>Testimonials</span></h2>
+        <div class="testimonials-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>"YOUR TESTIMONIAL - Edit this to add client feedback about your work."</p>
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://via.placeholder.com/60x60/00d9ff/1a1a2e?text=Client" alt="Client">
+              <div>
+                <h4>Client Name</h4>
+                <p>Company Name</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>"YOUR TESTIMONIAL - Edit this to add client feedback about your work."</p>
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://via.placeholder.com/60x60/00d9ff/1a1a2e?text=Client" alt="Client">
+              <div>
+                <h4>Client Name</h4>
+                <p>Company Name</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>"YOUR TESTIMONIAL - Edit this to add client feedback about your work."</p>
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://via.placeholder.com/60x60/00d9ff/1a1a2e?text=Client" alt="Client">
+              <div>
+                <h4>Client Name</h4>
+                <p>Company Name</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-nav">
+          <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+          <div class="testimonial-dots"></div>
+          <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What services do you offer?</h3>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>I offer web development, frontend development, backend development, and responsive design services. I
+                specialize in modern technologies like React, Angular, Node.js, PHP, and Laravel.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What is your development process?</h3>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>My development process includes: Requirements gathering, Planning & Architecture, Design & Prototyping,
+                Development, Testing & Quality Assurance, Deployment, and Ongoing Support.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>How long does a project take?</h3>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Project timelines vary based on complexity. A simple website takes 1-2 weeks, while complex full-stack
+                applications can take 4-8 weeks. I'll provide a detailed timeline after our initial consultation.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Do you provide ongoing support?</h3>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Yes, I offer ongoing support and maintenance packages to ensure your website stays updated, secure, and
+                performing at its best.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Contact <span>Me</span></h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>Email</h3>
+                <p>alexolajide@example.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h3>Phone</h3>
+                <p>+1 234 567 890</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                <h3>Location</h3>
+                <p>Nigeria</p>
+              </div>
+            </div>
+            <div class="contact-socials">
+              <a href="https://github.com/alexolajide" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/alexolajide" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://twitter.com/alexolajide" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/alexolajide" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn btn-primary magnetic">Send Message <i
+                class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Alex Olajide</h3>
+        <p>Full Stack Engineer</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/alexolajide" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/alexolajide" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/alexolajide" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/alexolajide" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Alex Olajide. All Rights Reserved.</p>
+      <div class="share-buttons">
+        <span>Share:</span>
+        <a href="#" onclick="shareOn('twitter')"><i class="fab fa-twitter"></i></a>
+        <a href="#" onclick="shareOn('linkedin')"><i class="fab fa-linkedin"></i></a>
+        <a href="#" onclick="shareOn('facebook')"><i class="fab fa-facebook"></i></a>
+        <a href="#" onclick="shareOn('whatsapp')"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="visitor-counter">
+    <i class="fas fa-eye"></i> <span id="visitorCount">0</span> Views
+  </div>
+
+  <a href="#home" class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
