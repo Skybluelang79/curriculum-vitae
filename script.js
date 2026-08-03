@@ -367,14 +367,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ---- Send Message ----
-  document.getElementById('sendMessage').addEventListener('click', () => {
-    const name = document.getElementById('formName').value.trim();
-    const email = document.getElementById('formEmail').value.trim();
-    const message = document.getElementById('formMessage').value.trim();
-    if (!name || !email || !message) { alert('Please fill in all fields'); return; }
-    window.location.href = `mailto:aolajide210@gmail.com?subject=Message from ${name}&body=${encodeURIComponent(message)}`;
-  });
+  // ---- Send Message (Netlify Forms) ----
+  const contactForm = document.querySelector('form[name="contact"]');
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const message = document.getElementById('formMessage').value.trim();
+      const status = document.getElementById('formStatus');
+      if (!name || !email || !message) {
+        status.className = 'mt-3 text-warning';
+        status.textContent = 'Please fill in all fields';
+        status.classList.remove('d-none');
+        return;
+      }
+      const data = new URLSearchParams(new FormData(contactForm));
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString()
+      })
+        .then(res => {
+          if (res.ok) {
+            contactForm.reset();
+            status.className = 'mt-3 text-success';
+            status.textContent = 'Message sent successfully!';
+          } else {
+            throw new Error('Submission failed');
+          }
+        })
+        .catch(() => {
+          status.className = 'mt-3 text-danger';
+          status.textContent = 'Something went wrong. Please try again.';
+        })
+        .finally(() => status.classList.remove('d-none'));
+    });
+  }
 
   // ---- Book Meeting ----
   document.getElementById('bookMeeting').addEventListener('click', e => {

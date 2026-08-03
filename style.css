@@ -230,12 +230,27 @@ body {
   background: linear-gradient(var(--bg-deep), var(--bg-deep)) padding-box,
               linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition);
   animation: profileFloat 4s ease infinite;
 }
+.profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 @keyframes profileFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 .profile-img:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--glow); }
 .profile-img i { color: var(--accent); opacity: 0.5; }
+
+/* ---- Hero Photo ---- */
+.hero-photo {
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-deep), var(--bg-deep)) padding-box,
+              linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  animation: profileFloat 4s ease infinite;
+  box-shadow: 0 0 40px var(--glow);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
 /* ---- Timeline ---- */
 .timeline { position: relative; padding-left: 32px; }
