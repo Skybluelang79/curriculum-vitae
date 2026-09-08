@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     root.style.setProperty('--accent2', accent2);
     root.style.setProperty('--accent2-rgb', `${r2}, ${g2}, ${b2}`);
     root.style.setProperty('--glow', `rgba(${r}, ${g}, ${b}, 0.25)`);
-    window.__particleColor = `${r}, ${g}, ${b}`;
     localStorage.setItem('custom_accent', hex);
   }
 
@@ -87,8 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('custom_accent');
     if (saved) applyAccentColor(saved);
   }
-
-  window.__particleColor = '129, 140, 248';
 
   const savedAccent = localStorage.getItem('custom_accent');
   if (savedAccent) {
@@ -133,90 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeEffect, isDeleting ? 40 : 80);
   }
   typeEffect();
-
-  // ---- Canvas Particles ----
-  function initParticleCanvas() {
-    const canvas = document.getElementById('particleCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resize() {
-      const hero = document.getElementById('hero');
-      canvas.width = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
-    }
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.5 + 0.5;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.opacity = Math.random() * 0.4 + 0.2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${window.__particleColor || '129, 140, 248'}, ${this.opacity})`;
-        ctx.fill();
-      }
-    }
-
-    function connect() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const o = (1 - dist / 120) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(${window.__particleColor || '129, 140, 248'}, ${o})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      connect();
-      requestAnimationFrame(animate);
-    }
-
-    const hero = document.getElementById('hero');
-    hero.addEventListener('mousemove', e => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-      particles.forEach(p => {
-        const dx = mx - p.x, dy = my - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-          p.vx += dx * 0.0008;
-          p.vy += dy * 0.0008;
-        }
-      });
-    });
-
-    window.addEventListener('resize', resize);
-    resize();
-    particles = Array.from({ length: 80 }, () => new Particle());
-    animate();
-  }
-  initParticleCanvas();
 
   // ---- Tilt Cards ----
   document.querySelectorAll('.tilt-card').forEach(card => {
