@@ -887,6 +887,8 @@ body.light-theme .navbar {
 .cover-commerce{ background: linear-gradient(135deg, #16a34a, #0ea5a5); }
 .cover-estate  { background: linear-gradient(135deg, #1f2937, #2563eb); }
 .cover-auth    { background: linear-gradient(135deg, #9333ea, #1f2937); }
+.cover-weather { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
+.cover-invest  { background: linear-gradient(135deg, #059669, #0d9488); }
 
 .project-cover-content {
   position: relative;
