@@ -1,6 +1,12 @@
 @echo off
-cd /d "%USERPROFILE%\OneDrive\Desktop\HTML,CSS,JAVASCRIPT LEVEL 1&2\work\Alex Portfolio"
-start "Alex Portfolio" node server.js
-timeout /t 3 /nobreak
-echo Server should be running at http://localhost:8080
+cd /d "%~dp0"
+
+if not exist "node_modules" (
+  echo Installing dependencies...
+  call npm install
+)
+
+start "Alex Portfolio" cmd /k "node server.js"
+timeout /t 3 /nobreak >nul
+echo Server should be running at http://localhost:3000
 pause

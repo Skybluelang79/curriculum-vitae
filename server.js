@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -29,8 +31,9 @@ app.post('/api/contact', async (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
+    from: process.env.EMAIL_USER || 'your-email@gmail.com',
     to: process.env.EMAIL_USER || 'your-email@gmail.com',
+    replyTo: email,
     subject: `Portfolio Contact: ${subject}`,
     text: `
 Name: ${name}
@@ -72,6 +75,10 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
   console.log(`Or access at http://127.0.0.1:${PORT}`);
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.warn('WARNING: EMAIL_USER / EMAIL_PASS are not set. The contact form will fail.');
+    console.warn('Copy .env.example to .env and fill in a Gmail address + Google App Password.');
+  }
 });
 
 module.exports = app;
