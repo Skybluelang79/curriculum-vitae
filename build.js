@@ -11,6 +11,8 @@ const SITE_FILES = [
   'cv.html',
   'cover.html',
   'cover_letter.html',
+  '404.html',
+  'og-image.png',
   'style.css',
   'script.js',
   'Alex.jpg',
