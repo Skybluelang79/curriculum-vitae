@@ -1,0 +1,49 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys race each other to production.
+concurrency:
+  group: netlify-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy to production
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install Netlify CLI
+        # Pinned to the same version used locally (netlify-cli 27.0.1).
+        run: npm install -g netlify-cli@27.0.1
+
+      - name: Deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          CI: 'true'
+        run: >
+          netlify deploy
+          --prod
+          --site=ce97ce66-6db1-43c3-a60c-796c483beee5
+          --message "Deploy ${GITHUB_SHA::7} from ${GITHUB_REF_NAME}"
+
+      - name: Verify production is serving the new build
+        run: |
+          curl -fsS --retry 5 --retry-delay 5 --retry-all-errors \
+            -o /dev/null -w 'status=%{http_code}\n' \
+            https://curriculum-vitae-alex.netlify.app/
