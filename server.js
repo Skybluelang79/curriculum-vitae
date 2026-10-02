@@ -8,11 +8,31 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const EMAIL_USER = process.env.EMAIL_USER || '';
+const EMAIL_PASS = process.env.EMAIL_PASS || '';
+const MAIL_CONFIGURED = Boolean(EMAIL_USER && EMAIL_PASS);
+
+const escapeHtml = (value) =>
+  String(value).replace(/[&<>"']/g, (ch) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[ch]));
+
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50kb' }));
 app.use(express.static(path.join(__dirname)));
 
 app.post('/api/contact', async (req, res) => {
+  if (!MAIL_CONFIGURED) {
+    return res.status(503).json({
+      success: false,
+      message: 'Contact form is not configured. Please email directly.'
+    });
+  }
+
   const { name, email, subject, message } = req.body;
 
   if (!name || !email || !subject || !message) {
@@ -25,14 +45,14 @@ app.post('/api/contact', async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER || 'your-email@gmail.com',
-      pass: process.env.EMAIL_PASS || 'your-app-password'
+      user: EMAIL_USER,
+      pass: EMAIL_PASS
     }
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER || 'your-email@gmail.com',
-    to: process.env.EMAIL_USER || 'your-email@gmail.com',
+    from: EMAIL_USER,
+    to: EMAIL_USER,
     replyTo: email,
     subject: `Portfolio Contact: ${subject}`,
     text: `
@@ -45,11 +65,11 @@ ${message}
     `,
     html: `
 <h2>New Contact Form Submission</h2>
-<p><strong>Name:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Subject:</strong> ${subject}</p>
+<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> ${escapeHtml(email)}</p>
+<p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
 <p><strong>Message:</strong></p>
-<p>${message}</p>
+<p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
     `
   };
 
@@ -75,7 +95,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
   console.log(`Or access at http://127.0.0.1:${PORT}`);
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  if (!MAIL_CONFIGURED) {
     console.warn('WARNING: EMAIL_USER / EMAIL_PASS are not set. The contact form will fail.');
     console.warn('Copy .env.example to .env and fill in a Gmail address + Google App Password.');
   }

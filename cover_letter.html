@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Olajide - Cover Letter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -22,7 +23,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      cursor: pointer;
     }
 
     body {
@@ -466,9 +466,61 @@
         font-size: 1.8rem;
       }
     }
+
+    /* ============ PAGE NAV ============ */
+    .page-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(20, 27, 38, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .page-nav a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .page-nav a:hover {
+      background: var(--gold-soft);
+      color: var(--navy);
+    }
+
+    .page-nav a.active {
+      background: var(--gold-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    body { padding-top: 72px; }
+
+    @media print {
+      .page-nav { display: none; }
+      body { padding-top: 0; }
+    }
   </style>
 </head>
 <body>
+  <nav class="page-nav">
+    <a href="index.html">Portfolio</a>
+    <a href="cv.html">CV</a>
+    <a href="cover.html">Cover Letter</a>
+    <a href="cover_letter.html" class="active">Open Letter</a>
+  </nav>
+
   <div class="letter-container">
     <div class="letter-header">
       <div>
@@ -523,7 +575,6 @@
     </button>
   </div>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
     function downloadPDF() {

@@ -32,23 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Navbar / scroll-to-top on scroll ---------- */
+  const sections = [...document.querySelectorAll('section[id]')];
+  const navAnchors = [...document.querySelectorAll('.nav-links a')];
+  // Sections without a matching nav link (education, services, faq) must not clear
+  // the highlight — otherwise the navbar goes blank while scrolling through them.
+  const linkedSections = sections.filter(s => navAnchors.some(a => a.getAttribute('href') === '#' + s.id));
+
   const onScroll = () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
     scrollTop.classList.toggle('active', window.scrollY > 400);
 
-    // Active section highlight
-    const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 120;
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      if (scrollPos >= top && scrollPos < top + height) {
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-        });
-      }
-    });
+    let current = null;
+    for (const section of linkedSections) {
+      if (scrollPos >= section.offsetTop) current = section.id;
+    }
+    navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -57,8 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Smooth scroll for hash links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    if (anchor === scrollTop) return; // handled above; avoid a competing scroll
     anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const hash = anchor.getAttribute('href');
+      if (!hash || hash === '#') return;
+      let target = null;
+      try {
+        target = document.querySelector(hash);
+      } catch {
+        return; // not a valid selector
+      }
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
@@ -180,12 +187,22 @@ document.addEventListener('DOMContentLoaded', () => {
       statusEl.className = 'form-status';
       contactForm.appendChild(statusEl);
 
+      const fields = contactForm.elements;
       const data = {
-        name: contactForm.name.value,
-        email: contactForm.email.value,
-        subject: contactForm.subject.value,
-        message: contactForm.message.value
+        name: fields.name.value.trim(),
+        email: fields.email.value.trim(),
+        subject: fields.subject.value.trim(),
+        message: fields.message.value.trim()
       };
+
+      if (!data.name || !data.email || !data.subject || !data.message) {
+        statusEl.className = 'form-status error';
+        statusEl.textContent = 'Please fill in every field.';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = original;
+        setTimeout(() => statusEl.remove(), 8000);
+        return;
+      }
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -208,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const subject = encodeURIComponent(data.subject || `Portfolio inquiry from ${data.name}`);
         const body = encodeURIComponent(`${data.message}\n\n- ${data.name}\n${data.email}`);
         window.location.href = `mailto:aolajide210@gmail.com?subject=${subject}&body=${body}`;
-        statusEl.className = 'form-status success';
         statusEl.textContent = 'Opening your email app to send the message...';
       } finally {
         submitBtn.disabled = false;

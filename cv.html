@@ -23,7 +23,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      cursor: pointer;
     }
 
     body {
@@ -705,9 +704,66 @@
         height: 100px;
       }
     }
+
+    /* ============ PAGE NAV ============ */
+    .page-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .page-nav a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .page-nav a:hover,
+    .page-nav a.active {
+      background: var(--gold-soft);
+      color: var(--navy);
+    }
+
+    .page-nav a.active {
+      font-weight: 700;
+    }
+
+    body {
+      padding-top: 72px;
+    }
+
+    @media print {
+      .page-nav {
+        display: none;
+      }
+      body {
+        padding-top: 0;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav class="page-nav">
+    <a href="index.html">Portfolio</a>
+    <a href="cv.html" class="active">CV</a>
+    <a href="cover.html">Cover Letter</a>
+    <a href="cover_letter.html">Open Letter</a>
+  </nav>
+
   <div class="cv-container">
     <div class="cv-header">
       <img src="Alex.jpg" alt="Alex Olajide" class="cv-profile-img">
