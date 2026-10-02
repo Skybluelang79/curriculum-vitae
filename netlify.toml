@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "rm -rf dist && mkdir -p dist && cp -a index.html cv.html cover.html cover_letter.html style.css script.js Alex.jpg Alex_Olajide_CV.pdf Hiring_Team_Letter.pdf dist/"
+  command = "node build.js"
 
 [[headers]]
   for = "/*"
