@@ -23,7 +23,46 @@ const escapeHtml = (value) =>
 
 app.use(cors());
 app.use(express.json({ limit: '50kb' }));
+app.use(express.urlencoded({ extended: true, limit: '50kb' }));
 app.use(express.static(path.join(__dirname)));
+
+// Production submissions are handled by Netlify Forms, which the browser posts
+// to "/". This mirrors that locally so `npm start` behaves like the live site
+// instead of 404ing on POST /.
+app.post('/', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+    return res.redirect('/');
+  }
+
+  if (MAIL_CONFIGURED) {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: EMAIL_USER, pass: EMAIL_PASS }
+    });
+
+    await transporter.sendMail({
+      from: EMAIL_USER,
+      to: EMAIL_USER,
+      replyTo: email,
+      subject: `Portfolio Contact: ${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
+      html: `
+<h2>New Contact Form Submission</h2>
+<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> ${escapeHtml(email)}</p>
+<p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
+<p><strong>Message:</strong></p>
+<p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`
+    }).catch((error) => console.error('Email error:', error));
+  } else {
+    console.warn('EMAIL_USER / EMAIL_PASS not set; submission logged only.');
+    console.warn(`${name} <${email}> — ${subject}: ${message}`);
+  }
+
+  res.redirect('/thanks');
+});
 
 app.post('/api/contact', async (req, res) => {
   if (!MAIL_CONFIGURED) {

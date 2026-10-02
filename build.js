@@ -12,6 +12,7 @@ const SITE_FILES = [
   'cover.html',
   'cover_letter.html',
   '404.html',
+  'thanks.html',
   'og-image.png',
   'style.css',
   'script.js',

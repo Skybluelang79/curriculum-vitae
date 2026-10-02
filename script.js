@@ -207,25 +207,48 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
+      // Honeypot: a real visitor never sees this field, so anything in it is a bot.
+      // Netlify drops those submissions silently, so we report success and move on.
+      if (contactForm.elements['bot-field'] && contactForm.elements['bot-field'].value) {
+        contactForm.reset();
+        statusEl.className = 'form-status success';
+        statusEl.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
+        return;
+      }
+
+      const payload = new URLSearchParams();
+      payload.append('form-name', contactForm.getAttribute('name') || 'contact');
+      for (const [key, value] of Object.entries(data)) payload.append(key, value);
+
       try {
-        const res = await fetch('/api/contact', {
+        // Netlify Forms expects a urlencoded POST. An empty 200 is the success
+        // signal; the submission itself is what matters, not the response body.
+        const res = await fetch('/', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
         });
-        if (res.ok) {
-          statusEl.className = 'form-status success';
-          statusEl.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
-          contactForm.reset();
-        } else {
-          throw new Error('Request failed');
-        }
+
+        if (!res.ok) throw new Error('Submit failed: ' + res.status);
+
+        statusEl.className = 'form-status success';
+        statusEl.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
+        contactForm.reset();
+
+        const thanksLink = document.createElement('a');
+        thanksLink.href = '/thanks';
+        thanksLink.textContent = 'See confirmation page';
+        thanksLink.style.cssText = 'display:block;margin-top:8px;color:#c9a227;font-size:0.88rem';
+        statusEl.appendChild(thanksLink);
       } catch {
-        // Static hosting fallback: open the visitor's email client with the message pre-filled.
+        // Last resort if the network drops mid-submit: hand the message to the
+        // visitor's own mail client rather than losing it silently.
+        statusEl.className = 'form-status error';
+        statusEl.textContent = "Couldn't send that just now. Opening your email app instead...";
+
         const subject = encodeURIComponent(data.subject || `Portfolio inquiry from ${data.name}`);
         const body = encodeURIComponent(`${data.message}\n\n- ${data.name}\n${data.email}`);
         window.location.href = `mailto:aolajide210@gmail.com?subject=${subject}&body=${body}`;
-        statusEl.textContent = 'Opening your email app to send the message...';
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = original;

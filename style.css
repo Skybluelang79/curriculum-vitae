@@ -1275,6 +1275,17 @@ body.light-theme .navbar {
   border: 1px solid rgba(248, 81, 73, 0.3);
 }
 
+/* Honeypot: hidden from people, visible to bots that fill every input. */
+.bot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ============ Footer ============ */
 .footer {
   background: var(--bg-alt);

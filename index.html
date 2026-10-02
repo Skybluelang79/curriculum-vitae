@@ -627,7 +627,12 @@
             </div>
           </div>
 
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" action="/thanks">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="bot-field">
+              <label>Do not fill this out if you are human: <input name="bot-field"></label>
+            </p>
             <div class="form-row">
               <input type="text" name="name" placeholder="Your Name" required>
               <input type="email" name="email" placeholder="Your Email" required>

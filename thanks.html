@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Sent | Alex Olajide</title>
+  <meta name="description" content="Your message has been received.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      color: #e8ecf2;
+      line-height: 1.6;
+      background-color: #141b26;
+      background-image: radial-gradient(circle at 15% 10%, rgba(31, 42, 58, 0.9) 0%, transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(201, 162, 39, 0.10) 0%, transparent 45%);
+    }
+
+    .tx-container {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 60px 44px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .tx-icon {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #141b26;
+      background: linear-gradient(135deg, #3fb950, #2ea043);
+      box-shadow: 0 12px 30px rgba(63, 185, 80, 0.3);
+    }
+
+    .tx-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .tx-text {
+      color: #9aa5b5;
+      font-size: 0.97rem;
+      margin-bottom: 30px;
+    }
+
+    .tx-text a {
+      color: #c9a227;
+      text-decoration: none;
+    }
+
+    .tx-text a:hover {
+      text-decoration: underline;
+    }
+
+    .tx-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tx-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .tx-btn-primary {
+      background: linear-gradient(135deg, #c9a227, #a8851c);
+      color: #141b26;
+      box-shadow: 0 10px 28px rgba(201, 162, 39, 0.28);
+    }
+
+    .tx-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(201, 162, 39, 0.42);
+    }
+
+    .tx-btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #cdd5e0;
+    }
+
+    .tx-btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(201, 162, 39, 0.5);
+      transform: translateY(-3px);
+    }
+
+    .tx-foot {
+      margin-top: 30px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 0.84rem;
+      color: #7d8798;
+    }
+
+    @media (max-width: 520px) {
+      .tx-container {
+        padding: 44px 24px;
+      }
+
+      .tx-actions .tx-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tx-btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="tx-container">
+    <div class="tx-icon" aria-hidden="true">
+      <i class="fas fa-paper-plane"></i>
+    </div>
+
+    <h1 class="tx-title">Message sent</h1>
+
+    <p class="tx-text">
+      Thanks for getting in touch. Your message is in my inbox and I'll reply
+      as soon as I can. If it's urgent, reach me directly on
+      <a href="mailto:aolajide210@gmail.com">aolajide210@gmail.com</a>.
+    </p>
+
+    <div class="tx-actions">
+      <a class="tx-btn tx-btn-primary" href="/">
+        <i class="fas fa-house" aria-hidden="true"></i>
+        Back to portfolio
+      </a>
+      <a class="tx-btn tx-btn-ghost" href="/cv">
+        <i class="fas fa-file-lines" aria-hidden="true"></i>
+        View my CV
+      </a>
+    </div>
+
+    <p class="tx-foot">Alex Olajide &middot; Full Stack Engineer &middot; Lagos, Nigeria</p>
+  </main>
+</body>
+
+</html>
